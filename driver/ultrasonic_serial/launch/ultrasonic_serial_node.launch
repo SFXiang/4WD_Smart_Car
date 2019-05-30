@@ -1,0 +1,7 @@
+<launch>
+  <!-- <include file="$(find ros_gpio_control)/launch/gpio.launch" /> -->
+  <node pkg="ultrasonic_serial" type="ultrasonic_serial" name="ultrasonic_serial" output="screen">
+    <param name="Q_Covariance" type="double" value="0.5" />
+    <param name="R_Covariance" type="double" value="0.4" />
+  </node>
+</launch>

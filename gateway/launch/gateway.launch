@@ -1,0 +1,10 @@
+<launch>
+    <arg name="rtmp_address" default="rtmp://192.168.0.154/app/test"/>
+    <arg name="image_topic" default="LaneImage"/>
+    <include file="$(find can_module)/launch/control_with_tbox.launch"/>
+    <node pkg="gateway" name="gateway" type="app.py" output="screen">
+        <param name="server_config_file" value="$(find gateway)/config/server_config.ini"/>
+        <param name="tele_control_topic" value="tele_control"/>
+        <param name="tele_report_topic" value="tele_report"/>
+    </node>
+</launch>

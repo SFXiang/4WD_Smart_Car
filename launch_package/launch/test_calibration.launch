@@ -1,0 +1,11 @@
+<launch>
+
+    <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch" />
+
+    <include file="$(find calibration_publisher)/launch/yunlecar_calibration_publisher.launch" />
+    
+    <include file="$(find cv_camera)/launch/cv_camera_driver.launch" />
+    
+    <include file="$(find calibration_camera_lidar)/launch/camera_lidar_calib.launch" />
+
+</launch>

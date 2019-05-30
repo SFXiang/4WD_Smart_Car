@@ -1,0 +1,8 @@
+<launch>
+
+    <!-- TASKIO -->
+    <node pkg="gateway" type="app.py" name="gateway" output="screen">
+        <param name="server_config_file" value="$(find gateway)/config/server_config.ini"/>
+    </node>
+
+</launch>

@@ -1,0 +1,34 @@
+<launch>
+    
+    <include file="$(find static_tf)/launch/static_tf_yunlecar.launch" />
+
+    <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch" />
+
+    <include file="$(find razor_imu_9dof)/launch/razor-pub.launch" />
+    <include file="$(find ray_ground_filter)/launch/Yunlecar_ray_ground_filter.1.launch" />
+    <include file="$(find odom_imu)/launch/odom_imu.launch" />
+
+    <include file="$(find calibration_publisher)/launch/yunlecar_calibration_publisher.launch" />
+
+    <node pkg="map_server" type="map_server" name="map_server_node" args="$(find static_map)/map_file/map.yaml"/>
+    
+    <node pkg="ndt_localization" type="ndt_localization_node" name="ndt_localization_node" output="screen">
+        <rosparam file="$(find ndt_localization)/params/test.yaml" />
+        <param name="global_map_file" value="$(find static_map)/map_file/yunle_car/zetong_fullmap_leaf2.pcd"/>
+    </node>
+
+    <include file="$(find waypoint_follower)/launch/pure_persuit.launch" />
+    
+    <include file="$(find can_bridge)/launch/can_bridge.launch" />
+    
+    <include file="$(find cv_camera)/launch/cv_camera_driver.launch" />
+
+    <node pkg="rviz" type="rviz" name="Rviz_for_extract_path" args="-d $(find global_planning)/rviz/global_plan_lanecross.rviz" />
+    
+    <include file="$(find joint_pixel_pointcloud)/launch/joint_pixel_pointcloud.launch"/>
+
+    <include file="$(find local_planner)/launch/rollout_generator.launch"/>
+
+    <include file="$(find local_planner)/launch/local_trajectory_generator.launch"/>    
+
+</launch>

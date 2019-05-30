@@ -1,0 +1,17 @@
+<launch>
+    <!--default定义的值可以在launch的时候通过命令行指定而被覆盖,而value定义的值不会-->
+    <include file="$(find static_tf)/launch/static_tf_yunlecar.launch" />
+
+    <!-- <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch" /> -->
+    <!-- <include file="$(find razor_imu_9dof)/launch/razor_pub.launch" /> --> -->
+
+    <param name="use_sim_time" value="false" type="bool"/>
+
+    <node pkg="ndt_mapping" type="fast_ndt_mapping_node" name="fast_ndt_mapping_node" output="screen">
+        <rosparam file="$(find ndt_mapping)/params/params_ndt_mapping.yaml" command="load"/>
+        <param name="planning_map_folder" type="string" value="/home/sin/Data/ros_bag/map/planning_map/" />
+        <param name="cost_map_folder" type="string" value="/home/sin/Data/ros_bag/map/cost_map_done/" />
+        <param name="costmap_voxel_size" type="double" value="0.15" />
+
+    </node>
+</launch>

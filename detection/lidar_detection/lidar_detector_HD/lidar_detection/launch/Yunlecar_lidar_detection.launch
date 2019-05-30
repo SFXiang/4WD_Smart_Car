@@ -1,0 +1,26 @@
+<launch>
+    <node pkg="lidar_detection" type="lidar_detection" name="lidar_detection" output="screen">
+        <param name="points_topic" value="/ray_filter/velodyne_points_costmap"/>
+        <param name="use_diffnormals" value="false"/>
+        <param name="downsample_cloud" value="false"/>
+        <param name="leaf_size" value="0.1"/>
+        <param name="cluster_size_min" value="20"/>
+        <param name="cluster_size_max" value="100000" />
+        <param name="pose_estimation" value="false" />
+        <!-- <param name="clip_min_height" value="-2.0"/>
+        <param name="clip_max_height" value="0.5"/> -->
+        <param name="keep_lanes" value="false" />
+        <param name="keep_lane_left_distance" value="5.0" />
+        <param name="keep_lane_right_distance" value="5.0" />
+        <param name="max_boundingbox_side" value="10.0"/>
+        <param name="cluster_merge_threshold" value="1.5" />
+        <param name="output_frame" value="velodyne" />
+        <param name="remove_points_upto" value="0.0" />
+        <param name="miclustering_distancenY" value="0.75" />
+        <param name="use_gpu" value="false" />
+        <param name="use_multiple_thres" value="true" />
+        <param name="clustering_distances" value="[0.5,1.1,1.6,2.1,2.6]" />
+        <param name="clustering_ranges" value="[15,30,45,60]"/>
+    </node>
+    <node pkg="detected_objects_visualizer" type="visualize_detected_objects" name="cluster_detect_visualization_01" output="screen" ns="/detection/lidar_detector" />
+</launch>

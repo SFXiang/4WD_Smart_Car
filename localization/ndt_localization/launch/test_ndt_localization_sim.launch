@@ -1,0 +1,35 @@
+<launch>
+  <param name="use_sim_time" value="true" type="bool"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="base2laser" args="0.17 0 0.185 0 0 0 1 /base_link /velodyne 100" />
+  <node pkg="tf" type="static_transform_publisher" name="base2imu" args="0.105 0.16 0.17 0 0 0 1 /base_link /base_imu_link 100" />
+  <node pkg="tf" type="static_transform_publisher" name="base2rr" args="-0.178 -0.178 -0.165 0 0 0 1 /base_link /wheel_rr 100" />
+
+  <node pkg="static_map" type="static_map_node" name="static_map_node">
+    <param name="pcd_file" value="$(find static_map)/map_file/yuquan_46w.pcd" />
+    <param name="map_frame" value="map" />
+    <param name="duration" value="1.0" />
+    <remap from="/static_map" to="/map/point_cloud" />
+  </node>
+  <include file="$(find ray_ground_filter)/launch/test_Yunlecar_ray_ground_filter.launch" />
+
+  <!-- <include file="$(find razor_imu_9dof)/launch/razor-pub.launch" /> -->
+  <node pkg="odom_imu" type="odom_imu_node" name="odom_imu_node" output="screen">
+    <param name="use_imu_only_" type="bool" value="true" />
+    <param name="max_interval" type="double" value="2.0" />
+    <param name="angle_vel_sensitive" type="double" value="0.1" />
+    <param name="linear_vel_sensitive" type="double" value="0.1" />
+    <param name="base_frame" type="string" value="/base_link" />
+    <param name="odom_frame" type="string" value="/odom" />
+    <param name="sub_imu_topic" type="string" value="/imu"/>
+    <!-- <param name="sub_hall_topic" type="string" value="/hall_speed"/> -->
+    <!-- <remap from="/ndt/current_pose" to="/current_pose" /> -->
+  </node>
+
+  <node pkg="map_server" type="map_server" name="global_cost_map_node" args="$(find static_map)/map_file/map.yaml"/>
+  <node pkg="rviz" type="rviz" name="Rviz_for_ndt_localization" args="-d $(find ndt_localization)/rviz/test_ndt_localization.rviz" />
+  <node pkg="ndt_localization" type="ndt_localization_node" name="ndt_localization_node" output="screen">
+    <rosparam file="$(find ndt_localization)/params/test.yaml" command="load" />
+    <param name="global_map_file" value="$(find static_map)/map_file/yuquan_46w.pcd"/>
+  </node>
+</launch>

@@ -1,0 +1,6 @@
+<launch>
+    <node pkg="static_map" type="densy_map" name="densy_map" output="screen">
+        <param name="pcd_file_path" value="/home/sin/Data/ros_bag/map/cost_map_done/" type="string" />
+        <param name="duration" value="5.0" type="double" />
+    </node>
+</launch>

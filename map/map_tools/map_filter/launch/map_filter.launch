@@ -1,0 +1,13 @@
+<!-- -->
+<launch>
+    <node pkg="rviz" type="rviz" name="rviz_for_map_filter" args="-d $(find map_filter)/rviz/rviz.rviz" />
+    <node pkg="rqt_reconfigure" type="rqt_reconfigure" name="map_filter_reconfigure" />
+    <node pkg="map_filter" type="map_filter_node" name="map_filter_node" output="screen">
+        <param name="leaf_size" value="0.3" />
+        <!-- <param name="in_pcd_file" value="$(find map_filter)/source_file/yuquan_118w.pcd"/> -->
+        <param name="in_pcd_file" value="/home/sin/Documents/lidar/map/20190323/vector_map/zetong_vectormap_leaf2.pcd"/>
+        <param name="out_pcd_file" value="$(find map_filter)/out_file/zetong_filtered.pcd"/>
+    </node>
+
+</launch>
+

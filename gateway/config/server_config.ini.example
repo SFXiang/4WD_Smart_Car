@@ -1,0 +1,7 @@
+[server]
+host=192.168.1.103
+port = 9001
+[protocol]
+version=1.0
+[vehicle]
+vin=00000000112417002

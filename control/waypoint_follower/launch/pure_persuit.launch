@@ -1,0 +1,31 @@
+<launch>
+
+    <arg name="is_linear_interpolation" default="False"/>
+    <arg name="wheel_base" default="0.5"/>
+    <arg name="lookahead_distance_ratio" default="6"/>
+    <arg name="minimum_lookahead_distance_" default="2"/>
+    <arg name="const_lookahead_distance_" default="5"/>
+    <arg name="const_velocity_" default="5.4"/>
+    <arg name="is_const_lookahead_dis" default="true"/>
+    <arg name="is_const_speed_command_" default="false"/>
+    <arg name="is_yunleCar" default="true"/>
+    <arg name="cross_lookahead_dis" default="2"/>
+    <arg name="lane_lookahead_dis" default="9"/>
+
+
+    <!-- rosrun waypoint_follower pure_pursuit -->
+    <node pkg="waypoint_follower" type="pure_persuit_node" name="pure_pursuit" output="screen" >
+        <param name="is_linear_interpolation" value="$(arg is_linear_interpolation)"/>
+        <param name="wheel_base" value="$(arg wheel_base)"/>
+        <param name="lookahead_distance_ratio" value="$(arg lookahead_distance_ratio)"/>
+        <param name="minimum_lookahead_distance_" value="$(arg minimum_lookahead_distance_)"/>
+        <param name="const_lookahead_distance_" value="$(arg const_lookahead_distance_)"/>
+        <param name="const_velocity_" value="$(arg const_velocity_)"/>
+        <param name="is_const_lookahead_dis" value="$(arg is_const_lookahead_dis)"/>
+        <param name="is_const_speed_command_" value="$(arg is_const_speed_command_)"/>
+        <param name="is_yunleCar" value="$(arg is_yunleCar)"/>
+        <param name="cross_lookahead_dis" value="$(arg cross_lookahead_dis)"/>
+        <param name="lane_lookahead_dis" value="$(arg lane_lookahead_dis)"/>
+
+    </node>
+</launch>
