@@ -33,4 +33,4 @@
 ![car](./pics/线控底盘.png)
 
 ### 演示
-！[](https://s31.aconvert.com/convert/p3r68-cdx67/uxbrw-60sgy.gif)
+![show](https://s31.aconvert.com/convert/p3r68-cdx67/uxbrw-60sgy.gif)
