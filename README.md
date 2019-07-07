@@ -9,12 +9,12 @@
 
 ## Demo 硬件平台：
 
-#### 计算平台
+### 计算平台
 - Jetson TX2
 - arduino-uno
-#### 车载平台
+### 车载平台
 - RC-car
-#### 传感器
+### 传感器
 - velodyne-16
 - Razor-9dof-imu
 
@@ -25,9 +25,12 @@
 
 ## 线控底盘实验
 
-#### 实验平台
-#### 底盘尺寸
+### 实验平台
+### 底盘尺寸
 ![car](./pics/底盘尺寸图.png)
 
-#### 底盘结构
+### 底盘结构
 ![car](./pics/线控底盘.png)
+
+### 演示
+！[](https://s31.aconvert.com/convert/p3r68-cdx67/uxbrw-60sgy.gif)
